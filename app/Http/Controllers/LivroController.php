@@ -38,6 +38,7 @@ class LivroController extends Controller
 
     public function store(StoreLivroRequest $request)
     {
+        // Corrigindo formatação do valor monetário
         $valor = str_replace(',', '.', str_replace('.', '', $request->valor));
 
         $livro = Livro::create([
@@ -49,6 +50,7 @@ class LivroController extends Controller
             'valor' => $valor,
         ]);
     
+        // Associando autores ao livro
         $livro->autores()->attach($request->autores);
     
         return redirect()->route('livros.index')->with('success', 'Livro adicionado com sucesso.');
@@ -64,22 +66,27 @@ class LivroController extends Controller
 
     public function update(UpdateLivroRequest $request, $id)
     {
-        $valor = str_replace(',', '.', str_replace('.', '', $request->valor));
-
         $livro = Livro::findOrFail($id);
+    
+        // Transformar o valor formatado antes de atualizar o banco
+        $valor = str_replace(',', '.', str_replace('.', '', $request->valor));
+    
+        // Atualizando os dados do livro
         $livro->update([
             'titulo' => $request->titulo,
             'editora' => $request->editora,
             'edicao' => $request->edicao,
             'ano_publicacao' => $request->ano_publicacao,
-            'valor' => $valor,
+            'valor' => $valor, // Certifique-se de que o valor está sendo atualizado corretamente
             'assunto_id' => $request->assunto_id,
         ]);
-
+    
+        // Atualizando os autores
         $livro->autores()->sync($request->autores);
     
         return redirect()->route('livros.index')->with('success', 'Livro atualizado com sucesso.');
     }
+    
 
     public function destroy($id)
     {
