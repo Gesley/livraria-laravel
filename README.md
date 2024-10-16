@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co/GHNGVM0/img-sistema.png" alt="img-sistema" border="0">
+
 ## Documentação do Projeto Laravel - Livraria
 Passos para Instalação e Configuração
 1. Clone o Repositório
