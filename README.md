@@ -1,6 +1,4 @@
-## converte isso aqui para um arquivo readme.md e manda o link para eu baixar
-
-Documentação do Projeto Laravel - Livraria
+## Documentação do Projeto Laravel - Livraria
 Passos para Instalação e Configuração
 1. Clone o Repositório
 git clone https://github.com/Gesley/livraria-laravel.git
